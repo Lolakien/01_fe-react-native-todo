@@ -1,16 +1,25 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { useState } from 'react';
+import { Button, StyleSheet, Text, View } from 'react-native';
 
 export default function App() {
+
+  const [name, setName] = useState<string>("Lola");
+  const [test, setTest] = useState({
+    name: "lolakien",
+    age: 22
+  });
+  const [count, setCout] = useState(0);
+
   return (
     <View style={styles.container}>
+      <Text style={{ fontSize: 60, fontWeight: "600" }}>{name} + Ha loooo Kien</Text>
+      <Text style={{ fontSize: 60, color: 'green' }}>{test.name}+ {test.age}</Text>
+      <Text style={{ fontSize: 60, color: 'red' }}>{JSON.stringify(test)}</Text>
+      <Text style={{ fontSize: 60, color: 'red' }}>Count : {count}</Text>
       <View>
-        <Text style={styles.header}>LolaKien</Text>
-        <Text style={styles.parrent}>BLA BlA bla </Text>
-        <Text style={styles.child}>aaaaaaaaaaaaa aa </Text>
+        <Button color={"black"} title='Increase' onPress={() => setCout(count + 1)} />
       </View>
-      <Text style={styles.helo1}>Helo word Kiennnnn!</Text>
-      <Text>Helo word LOLA Kiennnnn!</Text>
     </View>
   );
 }
@@ -22,22 +31,4 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
-  helo1: {
-    color: "aqua", fontSize: 40,
-    borderColor: "red",
-    borderWidth: 2,
-    padding: 10
-  },
-  header: {
-    fontSize: 30,
-    fontWeight: 'bold'
-  },
-  parrent: {
-    fontSize: 40,
-    color: "green"
-  },
-  child: {
-    fontSize: 20,
-    color: "yellow"
-  }
 });
